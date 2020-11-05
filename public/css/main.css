@@ -1,0 +1,40 @@
+.blowers {
+  display: flex;
+  margin: 5rem auto;
+}
+
+.blower {
+  background-color: grey;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  line-height: 10rem;
+  margin: 1rem;
+}
+
+.blower__active {
+  background-color: lightgreen;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  line-height: 10rem;
+  margin: 1rem;
+}
+
+.motors {
+  display: flex;
+  margin: 5rem auto;
+}
+
+.motor {
+  background-color: grey;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  line-height: 10rem;
+  margin: 1rem;
+}
+
+.blower__active {
+  background-color: lightgreen;
+}
