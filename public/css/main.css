@@ -3,7 +3,21 @@
   margin: 5rem auto;
 }
 
+.blowers-choreo {
+  display: flex;
+  margin: 5rem auto;
+}
+
 .blower {
+  background-color: grey;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  line-height: 10rem;
+  margin: 1rem;
+}
+
+.bloall {
   background-color: grey;
   width: 10rem;
   height: 10rem;
