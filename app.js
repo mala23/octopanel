@@ -4,15 +4,19 @@ const port = 3000
 
 var mqtt = require('mqtt');
 
+var client = mqtt.connect('mqtt://192.168.1.42:1883', {
+  clientId: 'octopanel'
+});
 /*
 var client = mqtt.connect('mqtt://3d8f57f8:67f1ba13358e9b30@broker.shiftr.io', {
   clientId: 'octopanel'
 });
 */
+/*
 var client = mqtt.connect('mqtt://172.20.10.3:1883', {
   clientId: 'octopanel'
 });
-
+*/
 /*
 var client = mqtt.connect('mqtt://192.168.1.25:1883', {
   clientId: 'octopanel'
@@ -100,22 +104,52 @@ app.get('/bloall', (req, res) => {
   console.log('/octoblo/blowers', 'bloall')
 })
 
-app.get('/winch01/forward', (req, res) => {
+app.get('/winches/all/10', (req, res) => {
   res.render('index')
-  client.publish('/ns12/forward')
-  console.log('/winch01/forward')
-  //console.log('/ns12/target', '1.00')
+  for (i = 0; i < 8; i++) {
+    client.publish('winch0'+i+'/target', '10')
+  }
 })
 
-app.get('/winch01/backward', (req, res) => {
+app.get('/winches/all/0', (req, res) => {
   res.render('index')
-  client.publish('/ns12/backward')
+  for (i = 0; i < 8; i++) {
+    client.publish('winch0'+i+'/target', '0')
+  }
+})
+
+app.get('/winches/all/stop', (req, res) => {
+  res.render('index')
+  for (i = 0; i < 8; i++) {
+    client.publish('winch0'+i+'/stop', '')
+  }
+})
+
+app.get('/winch08/forward', (req, res) => {
+  res.render('index')
+  client.publish('/winch08/forward', '')
+  console.log('/winch08/forward')
+  //client.publish('/winch08/target', '2')
+  /*
+  client.publish('/ns12/naos/forward')
+  client.publish('/ns12/naos', 'forward')
+  client.publish('/ns12/forward')
+  client.publish('/ns12/', 'forward')
+  client.publish('/ns12/forward', 'forward')
+  console.log('/ns12/forward')
+  console.log('/ns12/target', '1.00')
+  */
+})
+
+app.get('/winch08/backward', (req, res) => {
+  res.render('index')
+  client.publish('/winch01/backward')
   console.log('/winch01/backward')
 })
 
-app.get('/winch01/stop', (req, res) => {
+app.get('/winch08/stop', (req, res) => {
   res.render('index')
-  client.publish('/ns12/stop')
+  client.publish('/winch01/stop')
   console.log('/winch01/stop')
 })
 
